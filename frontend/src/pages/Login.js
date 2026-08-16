@@ -1,9 +1,8 @@
 // src/pages/Login.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
-  onAuthStateChanged,
 } from "firebase/auth";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { auth, db, googleProvider } from "../firebase";
@@ -43,23 +42,7 @@ export default function Login() {
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
-
-  
-  const [checkingAuth, setCheckingAuth] = useState(true);
-
   const navigate = useNavigate();
-
-  
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate("/welcome", { replace: true });
-      } else {
-        setCheckingAuth(false);
-      }
-    });
-    return unsubscribe;
-  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -67,8 +50,7 @@ export default function Login() {
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      
-      navigate("/welcome", { replace: true });
+      navigate("/Welcome");
     } catch (error) {
       setErrorMsg(error.message);
     } finally {
@@ -83,7 +65,7 @@ export default function Login() {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      
+      // First-time Google users won't have a Firestore doc yet — create one.
       const userRef = doc(db, "users", user.email);
       const existing = await getDoc(userRef);
       if (!existing.exists()) {
@@ -94,18 +76,22 @@ export default function Login() {
         });
       }
 
-      navigate("/welcome", { replace: true });
+      navigate("/Welcome");
     } catch (error) {
-      
+      console.error("GOOGLE LOGIN ERROR");
+      console.error("Error code:", error.code);
+      console.error("Error message:", error.message);
+      console.error("Full error:", error);
+      // Popup closed by user isn't a real error — don't show it as one
       if (error.code !== "auth/popup-closed-by-user") {
-        setErrorMsg(error.message);
+        setErrorMsg(`${error.code}: ${error.message}`);
       }
     } finally {
       setGoogleLoading(false);
     }
   };
 
-  
+  // Shared styling for text fields so they match the app's glass aesthetic
   const fieldSx = {
     "& .MuiOutlinedInput-root": {
       borderRadius: "10px",
@@ -116,11 +102,6 @@ export default function Login() {
     },
     "& .MuiInputLabel-root.Mui-focused": { color: theme.palette.primary.main },
   };
-
-  
-  if (checkingAuth) {
-    return null; 
-  }
 
   return (
     <Box
@@ -133,7 +114,8 @@ export default function Login() {
         transition: "background-color 0.3s ease",
       }}
     >
-      
+      {/* Ambient glows — wrapped in their own clipped layer so they never
+          hide page content when it grows taller than the viewport */}
       <Box
         sx={{
           position: "absolute",
