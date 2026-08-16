@@ -30,10 +30,11 @@ google-api-python-client==2.176.0
 google-auth==2.56.0
 google-auth-httplib2==0.2.0
 googleapis-common-protos==1.70.0
+
 grpcio==1.73.1
 grpcio-status==1.71.2
-
 gunicorn==23.0.0
+
 httplib2==0.22.0
 huggingface-hub==0.33.4
 idna==3.10
@@ -99,7 +100,7 @@ torch==2.7.1
 tqdm==4.67.1
 transformers==4.53.2
 typer==0.16.0
-typing-inspection==0.4.1
+typing-inspection==0.4.2
 typing_extensions==4.14.1
 uritemplate==4.2.0
 urllib3==2.5.0
