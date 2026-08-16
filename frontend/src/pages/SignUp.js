@@ -120,7 +120,8 @@ const Signup = () => {
         transition: "background-color 0.3s ease",
       }}
     >
-      
+      {/* Ambient glows — wrapped in their own clipped layer so they never
+          hide page content when it grows taller than the viewport */}
       <Box
         sx={{
           position: "absolute",
