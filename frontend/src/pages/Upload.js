@@ -29,6 +29,8 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 
 const experienceLevels = ["Beginner", "Mid-Level", "Experienced"];
 const MAX_FILE_MB = 10;
+const API_BASE = process.env.REACT_APP_API_BASE || "http://127.0.0.1:5000";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://127.0.0.1:5000";
 
 const analysisSteps = [
   "Reading your resume…",
@@ -60,7 +62,8 @@ export default function Upload() {
     return () => clearTimeout(t);
   }, []);
 
-  
+  // Cycle through meaningful status messages while the AI analysis is running,
+  // so the wait feels informative instead of a dead spinner.
   useEffect(() => {
     if (!loading) {
       setLoadingStep(0);
@@ -121,7 +124,7 @@ export default function Upload() {
     formData.append("email", auth.currentUser?.email || "unknown");
 
     try {
-      const response = await axios.post("http://localhost:5000/upload_resume", formData);
+      const response = await axios.post(`${API_BASE}/upload_resume`, formData);
       const { llmAnalysis, resumeText, jobDescription: jd } = response.data;
 
       navigate("/result", {
@@ -145,7 +148,8 @@ export default function Upload() {
         transition: "background-color 0.3s ease",
       }}
     >
-      
+      {/* Ambient glows — wrapped in their own clipped layer so they never
+          hide page content when it grows taller than the viewport */}
       <Box
         sx={{
           position: "absolute",
@@ -492,7 +496,7 @@ export default function Upload() {
               p: { xs: 4, sm: 5 },
             }}
           >
-            
+            {/* Spinner with a subtle glow pulse behind it */}
             <Box sx={{ position: "relative", width: 76, height: 76, mx: "auto", mb: 3 }}>
               <Box
                 sx={{
@@ -545,7 +549,7 @@ export default function Upload() {
               {analysisSteps[loadingStep]}
             </Typography>
 
-            
+            {/* Step progress dots */}
             <Stack direction="row" spacing={0.8} justifyContent="center" mt={3}>
               {analysisSteps.map((_, i) => (
                 <Box
