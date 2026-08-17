@@ -19,7 +19,7 @@
 ---
 
 ### 🔗 Live Demo
-> **🌐 Visit App:** `https://your-deployed-link.here`
+> **🌐 Visit App:** `https://symphonious-semifreddo-22bac5.netlify.app/`
 
 ---
 
@@ -178,63 +178,47 @@ sequenceDiagram
 <div align="center">
 
 ### 🏠 Home Page
-<img width="1883" height="959" alt="image" src="https://github.com/user-attachments/assets/897a30ca-ac9f-4b6f-9186-0707a211d467" />
-
+<img src="./screenshots/home.png" alt="ResumeIQ Home Page" width="800"/>
 
 <br/><br/>
 
 ### 🔑 Login
-<img width="1893" height="957" alt="image" src="https://github.com/user-attachments/assets/5007d363-b879-4154-b590-c1b61cff90a0" />
-
+<img src="./screenshots/login.png" alt="Login Page" width="800"/>
 
 <br/><br/>
 
 ### 📝 Sign Up
-<img width="1892" height="955" alt="image" src="https://github.com/user-attachments/assets/3e55786b-74db-4724-be70-ca25d9b5f929" />
-
+<img src="./screenshots/signup.png" alt="Sign Up Page" width="800"/>
 
 <br/><br/>
 
 ### 📊 Dashboard / Welcome
-<img width="1836" height="966" alt="image" src="https://github.com/user-attachments/assets/75cfebec-e7b6-40d6-8bb8-2d0667ab0c5d" />
-
+<img src="./screenshots/dashboard.png" alt="Dashboard" width="800"/>
 
 <br/><br/>
 
 ### 📤 Upload Resume + Job Description
-<img width="1833" height="970" alt="image" src="https://github.com/user-attachments/assets/296dd639-3496-42b7-850a-51732497cffd" />
-
-
-<br/><br/>
-
-### 📤 Result Analysis
-<img width="1806" height="908" alt="image" src="https://github.com/user-attachments/assets/d9f693fc-4b4a-4e3d-b968-398172ad46e7" />
-
-
+<img src="./screenshots/upload.png" alt="Upload Resume and JD" width="800"/>
 
 <br/><br/>
 
 ### 🗂️ Records
-<img width="1817" height="909" alt="image" src="https://github.com/user-attachments/assets/48489d8d-2fa3-49b7-b746-187c603ef307" />
-
+<img src="./screenshots/records.png" alt="Report Records" width="800"/>
 
 <br/><br/>
 
 ### 💼 Job Search
-<img width="1814" height="955" alt="image" src="https://github.com/user-attachments/assets/0c23bc06-ea3e-490a-991a-26127bc27568" />
-
+<img src="./screenshots/job-search.png" alt="Job Search" width="800"/>
 
 <br/><br/>
 
 ### 📌 My Jobs
-<img width="1817" height="960" alt="image" src="https://github.com/user-attachments/assets/f67a4c5f-0d3e-44e4-bf2a-a422fa4c54f6" />
-
+<img src="./screenshots/my-jobs.png" alt="My Jobs Tracker" width="800"/>
 
 <br/><br/>
 
 ### 🎤 Interview Prep
-<img width="1826" height="957" alt="image" src="https://github.com/user-attachments/assets/dbc9a578-0f76-4156-913d-edb922ebef64" />
-
+<img src="./screenshots/interview-prep.png" alt="Interview Prep" width="800"/>
 
 </div>
 
