@@ -1,3 +1,4 @@
+<a id="top"></a>
 <div align="center">
 
 # <span style="color: #6366F1;">ResumeIQ 🧠</span>
@@ -19,38 +20,48 @@
 ---
 
 ### 🔗 Live Demo
-> **🌐 Visit App:** `https://symphonious-semifreddo-22bac5.netlify.app/`
+> **🌐 Visit App:** `https://your-deployed-link.here`
 
 ---
 
 ### 📑 Table of Contents
 
-* [🧠 Overview](#-overview)
-* [🎯 Why ResumeIQ?](#-why-resumeiq)
-* [✨ Key Features](#-key-features)
-* [💻 Technology Stack](#-technology-stack)
-* [🏗️ System Architecture](#-system-architecture)
-* [🔄 Request Flow — Resume Analysis](#-request-flow--resume-analysis)
-* [🖼️ Screenshots](#-screenshots)
-* [🧩 Feature Deep Dive](#-feature-deep-dive)
-* [🗺️ User Journey](#-user-journey)
-* [🔌 API Reference](#-api-reference)
-* [🗂️ Project Structure](#-project-structure)
-* [⚙️ Developer Setup](#-developer-setup)
-* [🔮 Future Outcomes & Roadmap](#-future-outcomes--roadmap)
-* [🤝 Contributing](#-contributing)
-* [📜 License](#-license)
+* [🧠 Overview](#overview)
+* [🎯 Why ResumeIQ?](#why-resumeiq)
+* [✨ Key Features](#key-features)
+* [💻 Technology Stack](#technology-stack)
+* [🏗️ System Architecture](#system-architecture)
+* [🔄 Request Flow — Resume Analysis](#request-flow)
+* [🖼️ Screenshots](#screenshots)
+* [🧩 Feature Deep Dive](#feature-deep-dive)
+* [🗺️ User Journey](#user-journey)
+* [🔌 API Reference](#api-reference)
+* [🗂️ Project Structure](#project-structure)
+* [⚙️ Developer Setup](#developer-setup)
+* [🔮 Future Outcomes & Roadmap](#roadmap)
+* [🤝 Contributing](#contributing)
+* [📜 License](#license)
+
+<div align="center">
+
+[⬇ Jump to bottom](#bottom)
+
+</div>
 
 ---
 
+<a id="overview"></a>
 ## 🧠 Overview
 
 **ResumeIQ** is a full-stack, AI-powered platform built to solve one specific problem: most job seekers get rejected at the screening stage not because they lack the skills, but because their resume never speaks the job description's language in the first place.
 
 ResumeIQ closes that gap. Upload a resume, paste a job description, and within seconds get a match score, a section-by-section breakdown of what's working and what isn't, and a concrete action plan — missing skills, suggested courses, and projects worth adding. Beyond the one-time analysis, it becomes a full career companion: a job search engine matched to your resume, an application tracker with follow-up reminders, mock interview practice, and an AI Career Assistant that already knows your resume and your job history when you ask it a question.
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="why-resumeiq"></a>
 ## 🎯 Why ResumeIQ?
 
 | Area | Traditional Approach | 🚀 ResumeIQ |
@@ -61,8 +72,11 @@ ResumeIQ closes that gap. Upload a resume, paste a job description, and within s
 | **Interview prep** | Generic question banks | Mock interviews grounded in your actual resume |
 | **Career guidance** | Search engine + hope | Context-aware AI chat that knows your data |
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="key-features"></a>
 ## ✨ Key Features
 
 | 🛠️ Feature | 📝 Description |
@@ -78,8 +92,11 @@ ResumeIQ closes that gap. Upload a resume, paste a job description, and within s
 | **🌓 Light / Dark Mode** | Full theme system across the entire app, persisted per user. |
 | **🔒 Secure Auth** | Firebase Authentication (Email/Password + Google) with protected routes. |
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="technology-stack"></a>
 ## 💻 Technology Stack
 
 | Layer | Technology | Purpose |
@@ -88,14 +105,17 @@ ResumeIQ closes that gap. Upload a resume, paste a job description, and within s
 | **UI Library** | ![MUI](https://img.shields.io/badge/MUI-007FFF?style=flat-square&logo=mui&logoColor=white) | Design system, theming (light/dark), and layout primitives. |
 | **Backend** | ![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white) | REST API, request routing, and orchestration logic. |
 | **Resume Analysis AI** | ![Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=flat-square&logo=google&logoColor=white) | Section-by-section resume ↔ job description comparison. |
-| **Career Assistant AI** | ![Groq](https://img.shields.io/badge/Groq_Cloud-F34F29?style=flat-square) | Ultra-low-latency Llama inference for the in-app chat assistant. |
+| **Career Assistant AI** | ![Groq](https://img.shields.io/badge/Groq_Cloud-F34F29?style=flat-square) | Ultra-low-latency inference for the in-app chat assistant. |
 | **Database** | ![MongoDB](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white) | Cloud-hosted storage for resumes, jobs, tracker, and sessions. |
 | **Authentication** | ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black) | Email/password + Google sign-in, protected routing. |
 | **Scheduling** | ![APScheduler](https://img.shields.io/badge/APScheduler-Background_Jobs-6366F1?style=flat-square) | Periodic job-board refresh and stale-listing cleanup. |
 | **Language** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) | Backend orchestration + frontend logic. |
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="system-architecture"></a>
 ## 🏗️ System Architecture
 
 ResumeIQ follows a decoupled **Client–Server architecture**, with two independent AI providers handling distinct responsibilities — Gemini for deep document analysis, Groq for fast conversational inference.
@@ -106,7 +126,7 @@ graph TD
     Frontend <--> |REST API| Backend[Flask Server]
     subgraph AI["AI Providers"]
     Backend <--> |Resume × JD Analysis| Gemini[Google Gemini]
-    Backend <--> |Career Assistant Chat| Groq[Groq · Llama]
+    Backend <--> |Career Assistant Chat| Groq[Groq]
     end
     Backend <--> |Auth| Firebase[(Firebase Auth)]
     Backend <--> |Read/Write| DB[(MongoDB Atlas)]
@@ -148,8 +168,11 @@ erDiagram
     }
 ```
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="request-flow"></a>
 ## 🔄 Request Flow — Resume Analysis
 
 ```mermaid
@@ -169,61 +192,74 @@ sequenceDiagram
     F->>U: Render match score, gaps, and action plan
 ```
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="screenshots"></a>
 ## 🖼️ Screenshots
-
-> Replace the placeholders below with real screenshots — drop your image files into a `/screenshots` folder in the repo root and update the paths.
 
 <div align="center">
 
 ### 🏠 Home Page
-<img src="./screenshots/home.png" alt="ResumeIQ Home Page" width="800"/>
+<img width="1883" height="959" alt="Home Page" src="https://github.com/user-attachments/assets/897a30ca-ac9f-4b6f-9186-0707a211d467" />
 
 <br/><br/>
 
 ### 🔑 Login
-<img src="./screenshots/login.png" alt="Login Page" width="800"/>
+<img width="1893" height="957" alt="Login Page" src="https://github.com/user-attachments/assets/5007d363-b879-4154-b590-c1b61cff90a0" />
 
 <br/><br/>
 
 ### 📝 Sign Up
-<img src="./screenshots/signup.png" alt="Sign Up Page" width="800"/>
+<img width="1892" height="955" alt="Sign Up Page" src="https://github.com/user-attachments/assets/3e55786b-74db-4724-be70-ca25d9b5f929" />
 
 <br/><br/>
 
 ### 📊 Dashboard / Welcome
-<img src="./screenshots/dashboard.png" alt="Dashboard" width="800"/>
+<img width="1836" height="966" alt="Dashboard" src="https://github.com/user-attachments/assets/75cfebec-e7b6-40d6-8bb8-2d0667ab0c5d" />
 
 <br/><br/>
 
 ### 📤 Upload Resume + Job Description
-<img src="./screenshots/upload.png" alt="Upload Resume and JD" width="800"/>
+<img width="1833" height="970" alt="Upload Resume and JD" src="https://github.com/user-attachments/assets/296dd639-3496-42b7-850a-51732497cffd" />
+
+<br/><br/>
+
+### 📈 Result Analysis
+<img width="1806" height="908" alt="Result Analysis" src="https://github.com/user-attachments/assets/d9f693fc-4b4a-4e3d-b968-398172ad46e7" />
 
 <br/><br/>
 
 ### 🗂️ Records
-<img src="./screenshots/records.png" alt="Report Records" width="800"/>
+<img width="1817" height="909" alt="Report Records" src="https://github.com/user-attachments/assets/48489d8d-2fa3-49b7-b746-187c603ef307" />
 
 <br/><br/>
 
 ### 💼 Job Search
-<img src="./screenshots/job-search.png" alt="Job Search" width="800"/>
+<img width="1814" height="955" alt="Job Search" src="https://github.com/user-attachments/assets/0c23bc06-ea3e-490a-991a-26127bc27568" />
 
 <br/><br/>
 
 ### 📌 My Jobs
-<img src="./screenshots/my-jobs.png" alt="My Jobs Tracker" width="800"/>
+<img width="1817" height="960" alt="My Jobs Tracker" src="https://github.com/user-attachments/assets/f67a4c5f-0d3e-44e4-bf2a-a422fa4c54f6" />
 
 <br/><br/>
 
 ### 🎤 Interview Prep
-<img src="./screenshots/interview-prep.png" alt="Interview Prep" width="800"/>
+<img width="1826" height="957" alt="Interview Prep 1" src="https://github.com/user-attachments/assets/dbc9a578-0f76-4156-913d-edb922ebef64" />
+
+<img width="1825" height="971" alt="Interview Prep 2" src="https://github.com/user-attachments/assets/f5ba57a2-323d-4fcd-846a-c54a4897bfb8" />
+
+<img width="1819" height="964" alt="Interview Prep 3" src="https://github.com/user-attachments/assets/21ee9fc9-904c-45fd-b8c2-c55b58763283" />
 
 </div>
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="feature-deep-dive"></a>
 ## 🧩 Feature Deep Dive
 
 ### 📄 Resume–JD Analysis
@@ -241,8 +277,11 @@ A guided mock-interview session — either grounded in a specific job's context 
 ### 💬 Career Assistant
 A persistent chat widget (powered by Groq for near-instant responses) that's automatically grounded in your resume text and tracked job data — so "what should I do next?" gets a real, personalized answer instead of a generic one.
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="user-journey"></a>
 ## 🗺️ User Journey
 
 | Stage | User Goal | Touchpoint |
@@ -255,8 +294,11 @@ A persistent chat widget (powered by Groq for near-instant responses) that's aut
 | **6. Preparation** | Get interview-ready | Interview Prep mock sessions |
 | **7. Guidance** | Ask "what next?" anytime | Career Assistant chat |
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="api-reference"></a>
 ## 🔌 API Reference
 
 | Method | Endpoint | Description |
@@ -276,8 +318,11 @@ A persistent chat widget (powered by Groq for near-instant responses) that's aut
 | `GET` | `/api/interview/<id>/report` | Fetch the final performance report. |
 | `POST` | `/api/assistant/chat` | Chat with the Career Assistant. |
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="project-structure"></a>
 ## 🗂️ Project Structure
 
 ```
@@ -305,8 +350,11 @@ ResumeIQ/
 └── README.md
 ```
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="developer-setup"></a>
 ## ⚙️ Developer Setup
 
 ### Prerequisites
@@ -365,8 +413,11 @@ npm start
 
 The frontend runs on `http://localhost:3000`, backend on `http://127.0.0.1:5000`.
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="roadmap"></a>
 ## 🔮 Future Outcomes & Roadmap
 
 ResumeIQ is evolving from a resume analyzer into a complete AI-driven placement companion. Planned directions:
@@ -389,8 +440,11 @@ ResumeIQ is evolving from a resume analyzer into a complete AI-driven placement 
 - [ ] Predictive skill-gap alerts based on trending job market data.
 - [ ] Peer benchmarking — see how your resume match score compares anonymously to others applying for similar roles.
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="contributing"></a>
 ## 🤝 Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -401,8 +455,11 @@ Contributions are what make the open-source community such an amazing place to l
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+<div align="right"><a href="#top">⬆ Back to top</a></div>
+
 ---
 
+<a id="license"></a>
 ## 📜 License
 
 Distributed under the MIT License. See `LICENSE` for details.
@@ -413,8 +470,11 @@ Distributed under the MIT License. See `LICENSE` for details.
 
 **Anuj Upadhayay**
 
+<a id="bottom"></a>
 <div align="center">
 
 **If ResumeIQ helped you, consider giving the repo a ⭐ — it means a lot!**
+
+[⬆ Back to top](#top)
 
 </div>
