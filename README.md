@@ -20,7 +20,7 @@
 ---
 
 ### 🔗 Live Demo
-> **🌐 Visit App:** `https://your-deployed-link.here`
+> **🌐 Visit App:** `https://symphonious-semifreddo-22bac5.netlify.app/`
 
 ---
 
