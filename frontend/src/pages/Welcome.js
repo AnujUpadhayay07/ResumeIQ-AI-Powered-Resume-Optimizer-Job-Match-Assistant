@@ -130,7 +130,7 @@ export default function Welcome() {
           >
             Welcome to{" "}
             <Box component="span" sx={{ color: theme.palette.primary.main }}>
-              ResuMate
+              ResumeIQ
             </Box>
           </Typography>
           <Typography
@@ -181,7 +181,7 @@ export default function Welcome() {
             fontWeight={700}
             sx={{ color: theme.palette.text.primary, mb: 2.5, letterSpacing: "-0.01em" }}
           >
-            How ResuMate helps you
+            How ResumeIQ helps you
           </Typography>
 
           <Stack spacing={2} sx={{ mb: 1 }}>
