@@ -91,6 +91,7 @@ ResumeIQ closes that gap. Upload a resume, paste a job description, and within s
 | **💬 Career Assistant** | A Groq-powered chatbot grounded in your resume and job activity — answers "what should I do next?" with real context. |
 | **🌓 Light / Dark Mode** | Full theme system across the entire app, persisted per user. |
 | **🔒 Secure Auth** | Firebase Authentication (Email/Password + Google) with protected routes. |
+| **🧑‍✈️ Guided First Visit** | An in-app tour bot walks brand-new users through the platform on their very first Home load. |
 
 <div align="right"><a href="#top">⬆ Back to top</a></div>
 
