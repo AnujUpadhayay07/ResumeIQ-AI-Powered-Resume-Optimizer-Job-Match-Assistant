@@ -15,14 +15,15 @@
 
 **Bridging the gap between your resume and your dream job — with AI that reads both like a recruiter would.**
 
+
+### 🚀 [**LAUNCH RESUMEIQ →**](https://symphonious-semifreddo-22bac5.netlify.app/)
+
+[![Live Demo](https://img.shields.io/badge/🌐_LIVE_DEMO-Click_to_Open-10b981?style=for-the-badge&labelColor=0f1e1b)](https://symphonious-semifreddo-22bac5.netlify.app/)
+
 </div>
 
----
 
-### 🔗 Live Demo
-> **🌐 Visit App:** `https://symphonious-semifreddo-22bac5.netlify.app/`
 
----
 
 ### 📑 Table of Contents
 
