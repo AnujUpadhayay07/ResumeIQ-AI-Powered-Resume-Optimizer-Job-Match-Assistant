@@ -31,6 +31,30 @@ const experienceLevels = ["Beginner", "Mid-Level", "Experienced"];
 const MAX_FILE_MB = 10;
 const API_BASE = process.env.REACT_APP_API_BASE || "http://127.0.0.1:5000";
 
+// Common job roles shown in the dropdown. "Other" reveals a free-text field
+// so users can type a role that isn't in this list.
+const jobRoles = [
+  "Software Engineer",
+  "Frontend Developer",
+  "Backend Developer",
+  "Full Stack Developer",
+  "Mobile App Developer",
+  "Data Scientist",
+  "Data Analyst",
+  "Machine Learning Engineer",
+  "AI Engineer",
+  "DevOps Engineer",
+  "Cloud Engineer",
+  "QA / Test Engineer",
+  "Product Manager",
+  "Business Analyst",
+  "UI/UX Designer",
+  "Cybersecurity Analyst",
+  "Database Administrator",
+  "System Administrator",
+  "Technical Support Engineer",
+  "Other",
+];
 
 const analysisSteps = [
   "Reading your resume…",
@@ -49,13 +73,19 @@ export default function Upload() {
 
   const [mounted, setMounted] = useState(false);
   const [resumeFile, setResumeFile] = useState(null);
-  const [jobTitle, setJobTitle] = useState("");
+  const [selectedRole, setSelectedRole] = useState("");
+  const [customJobTitle, setCustomJobTitle] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
   const [errorMsg, setErrorMsg] = useState("");
   const [dragActive, setDragActive] = useState(false);
+
+  const isOtherRole = selectedRole === "Other";
+  // Final job title that actually gets submitted — either the dropdown pick
+  // or whatever the user typed in the manual "Other" field.
+  const jobTitle = isOtherRole ? customJobTitle.trim() : selectedRole;
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 60);
@@ -235,23 +265,28 @@ export default function Upload() {
           }}
         >
           <Box component="form" onSubmit={handleSubmit} noValidate>
-            {/* Job Title + Experience side by side on desktop */}
+            {/* Job Title (dropdown) + Experience side by side on desktop */}
             <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-              <TextField
-                label="Job Title"
-                fullWidth
-                margin="normal"
-                value={jobTitle}
-                onChange={(e) => setJobTitle(e.target.value)}
-                required
-                sx={fieldSx}
-                placeholder="e.g. Senior Frontend Engineer"
-                InputProps={{
-                  startAdornment: (
+              <FormControl fullWidth margin="normal" required sx={fieldSx}>
+                <InputLabel>Job Title</InputLabel>
+                <Select
+                  value={selectedRole}
+                  label="Job Title"
+                  onChange={(e) => {
+                    setSelectedRole(e.target.value);
+                    if (e.target.value !== "Other") setCustomJobTitle("");
+                  }}
+                  startAdornment={
                     <WorkOutlineIcon sx={{ fontSize: 19, color: theme.palette.text.secondary, mr: 1 }} />
-                  ),
-                }}
-              />
+                  }
+                >
+                  {jobRoles.map((role) => (
+                    <MenuItem key={role} value={role}>
+                      {role}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
 
               <FormControl fullWidth margin="normal" required sx={fieldSx}>
                 <InputLabel>Experience Level</InputLabel>
@@ -271,6 +306,21 @@ export default function Upload() {
                 </Select>
               </FormControl>
             </Stack>
+
+            {/* Manual job title box — only shown when "Other" is picked above */}
+            {isOtherRole && (
+              <TextField
+                label="Enter your job title"
+                fullWidth
+                margin="normal"
+                value={customJobTitle}
+                onChange={(e) => setCustomJobTitle(e.target.value)}
+                required
+                autoFocus
+                sx={fieldSx}
+                placeholder="e.g. Embedded Systems Engineer"
+              />
+            )}
 
             <TextField
               label="Job Description"
